@@ -18,13 +18,9 @@ Original Author: Shay Gal-on
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "stdarg.h"
-#include "string.h"
 
 #include "coremark.h"
 #include "main.h"
-
-int ee_printf(const char *fmt, ...) ;
 
 extern void platform_init(void);
 extern unsigned int Get_Tick(void);
@@ -167,22 +163,4 @@ portable_fini(core_portable *p)
     p->portable_id = 0;
 }
 
-
-int ee_printf(const char *fmt, ...) 
-{
-	char buf[256];
-	va_list args;
-	int n = 0;
-
-	va_start(args, fmt);
-	vsprintf(buf, fmt, args);
-	va_end(args);
-  
-  for (n=0; n<strlen(buf); n++) {
-    while ((UART->SR & UART_SR_TXE_Msk) == 0);
-    UART->TDR = buf[n];
-  }
-  
-	return n;
-}
 

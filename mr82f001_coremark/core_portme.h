@@ -56,7 +56,7 @@ Original Author: Shay Gal-on
    function.
 */
 #ifndef HAS_PRINTF
-#define HAS_PRINTF 0
+#define HAS_PRINTF 1
 #endif
 
 /* Configuration : CORE_TICKS

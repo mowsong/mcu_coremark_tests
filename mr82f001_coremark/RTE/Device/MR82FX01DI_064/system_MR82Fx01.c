@@ -115,14 +115,14 @@ void SystemCoreClockSelect(eCoreClk cc)
 
             SYSCTRL->PLLCON_b.PLLEN      = 1; // enable PLL
   
-			SYSCTRL->APBBCKCON |= SYSCTRL_APBBCKCON_IWDTBCKE_Msk;
+            SYSCTRL->APBBCKCON |= SYSCTRL_APBBCKCON_IWDTBCKE_Msk;
 
             while (SYSCTRL->PLLCON_b.LOCKED == 0) {
                 //__NOP();
                 WDT->IWDTKR = 0x5A5A5A5A;
             }   
             
-            // switch to HXTAL
+            // switch to PLL
             SYSCTRL->SYSCLKSEL = 0x3;   
             
             SystemCoreClock = PLL160;       
