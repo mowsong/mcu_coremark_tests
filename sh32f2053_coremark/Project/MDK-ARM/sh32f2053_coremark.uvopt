@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>4</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -114,7 +114,7 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <pMon>BIN\CMSIS_AGDI.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
@@ -135,7 +135,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>d</Name>
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -340,7 +340,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_rcc.c</PathWithFileName>
+      <PathWithFileName>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_rcc.c</PathWithFileName>
       <FilenameWithoutPath>sh32f2xx_rcc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -352,7 +352,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_iwdt.c</PathWithFileName>
+      <PathWithFileName>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_iwdt.c</PathWithFileName>
       <FilenameWithoutPath>sh32f2xx_iwdt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -364,7 +364,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_gpio.c</PathWithFileName>
+      <PathWithFileName>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_gpio.c</PathWithFileName>
       <FilenameWithoutPath>sh32f2xx_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -376,7 +376,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_uart.c</PathWithFileName>
+      <PathWithFileName>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_uart.c</PathWithFileName>
       <FilenameWithoutPath>sh32f2xx_uart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

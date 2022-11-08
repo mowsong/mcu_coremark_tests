@@ -15,6 +15,8 @@
   *
   ******************************************************************************
   */
+
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -55,27 +57,11 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-#if defined(__GNUC__)
-int _write(int fd, char * ptr, int len)
-{
-  HAL_UART_Transmit(&huart1, (uint8_t *) ptr, len, HAL_MAX_DELAY);
-  return len;
-}
-#elif defined (__ICCARM__)
-#include "LowLevelIOInterface.h"
-size_t __write(int handle, const unsigned char * buffer, size_t size)
-{
-  HAL_UART_Transmit(&huart1, (uint8_t *) buffer, size, HAL_MAX_DELAY);
-  return size;
-}
-#elif defined (__CC_ARM)
 int fputc(int ch, FILE *f)
 {
     HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
-
-#endif
 
 void SystemClock_Config_Ex(void)
 {
@@ -98,12 +84,20 @@ void SystemClock_Config_Ex(void)
   RCC_OscInitStruct.PLL.PLLM = 8;
 #if defined (SYSTEM_CLOCK_168M)
   RCC_OscInitStruct.PLL.PLLN = 168;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+#elif defined (SYSTEM_CLOCK_160M)
+  RCC_OscInitStruct.PLL.PLLN = 160;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 #elif defined (SYSTEM_CLOCK_120M)
   RCC_OscInitStruct.PLL.PLLN = 120;
-#else
-    RCC_OscInitStruct.PLL.PLLN = 168;
-#endif
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+#elif defined (SYSTEM_CLOCK_24M)
+  RCC_OscInitStruct.PLL.PLLN = 96;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV8;
+#else
+  RCC_OscInitStruct.PLL.PLLN = 168;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+#endif
   RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -118,10 +112,12 @@ void SystemClock_Config_Ex(void)
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
-#if defined (SYSTEM_CLOCK_168M)
+#if defined (SYSTEM_CLOCK_168M) | (SYSTEM_CLOCK_160M)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
 #elif defined (SYSTEM_CLOCK_120M)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+#elif defined (SYSTEM_CLOCK_24M)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
 #else
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
 #endif
@@ -136,6 +132,14 @@ void platform_init(void)
   SystemClock_Config_Ex();
   MX_GPIO_Init();
   MX_USART1_UART_Init();
+  
+#if defined (CACHE_OFF)  
+  __HAL_FLASH_INSTRUCTION_CACHE_DISABLE();
+  __HAL_FLASH_DATA_CACHE_DISABLE();
+#endif
+#if defined (PREFETCH_OFF)
+  __HAL_FLASH_PREFETCH_BUFFER_DISABLE();
+#endif
 }
 /* USER CODE END 0 */
 

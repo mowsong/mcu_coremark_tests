@@ -1,0 +1,10 @@
+DebugConfig
+stm32f407_coremark
+*.scvd
+stm32f401_coremark
+*.lst
+*.ms
+stm32f103_coremark
+Listings
+Objects
+obj

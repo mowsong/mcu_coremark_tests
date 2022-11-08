@@ -26,10 +26,6 @@ int fputc(int ch, FILE *f)
     return ch;
 }
 
-void _sys_exit(int return_code) {
-label:  goto label;  /* endless loop */
-}
-
 void GPIO_EnableDigital(GPIO_Type *GPIO, uint32_t Pin, uint32_t func)
 {            
   GPIO->FSR &= ~(3U<<(Pin<<1));
@@ -49,13 +45,19 @@ void RCC_Configuration(void)
   
   SYSCTRL->HSRCTRIM = 0x128;
   
-#if 1
-  SystemCoreClockSelect(CoreClk_PLL160M);
-  SystemCoreClock = 160000000UL;
-#else
-  SystemCoreClockSelect(CoreClk_HSRC8M);
-  SystemCoreClock = 8000000UL;
+  SYSCTRL->SYSCLKDIV = 0x0;
+
+#if SYSTEM_CLOCK_160M
+  FLSCTRL->ACR = 6;
+  PLL_Init(pll_hsrc8_160M_out);
+  SystemCoreClock = 160000000U;
+#elif SYSTEM_CLOCK_24M
+  FLSCTRL->ACR = 0;
+  PLL_Init(pll_hsrc8_24M_out);
+  SystemCoreClock = 24000000U;
 #endif
+
+  SYSCTRL->SYSCLKSEL = 0x3;
 }
 
 void GPIO_Configuration(void)
@@ -89,8 +91,17 @@ int platform_init(void)
   GPIO_Configuration();
   UART_Configuration();
   
+#if defined (ICACHE_DISABLE)  
+  SCB_DisableICache();
+#else
   SCB_EnableICache();
+#endif
+  
+#if defined (DCACHE_DISABLE) 
+  SCB_DisableDCache();
+#else
   SCB_EnableDCache();
+#endif
   
   SysTick_Config(SystemCoreClock/1000);
 

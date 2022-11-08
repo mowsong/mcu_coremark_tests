@@ -337,7 +337,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Omax</MiscControls>
-              <Define>ITERATIONS=6000</Define>
+              <Define>SYSTEM_CLOCK_160M, ICACHE_DISABLE, DCACHE_DISABLE, ITERATIONS=2000</Define>
               <Undefine></Undefine>
               <IncludePath>.\simple_lib;..\coremark;..\mr82f001_coremark</IncludePath>
             </VariousControls>

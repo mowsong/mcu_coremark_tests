@@ -10,8 +10,8 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>6140000::V6.14::ARMCLANG</pCCUsed>
+      <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>SH32F2053</Device>
@@ -149,7 +149,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>4</TargetSelection>
+          <TargetSelection>3</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -163,7 +163,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
+            <Driver>BIN\CMSIS_AGDI.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -352,7 +352,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>5</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -361,14 +361,14 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>3</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>1</v6Lang>
-            <v6LangP>1</v6LangP>
+            <v6Lang>3</v6Lang>
+            <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -378,7 +378,7 @@
               <MiscControls></MiscControls>
               <Define>USING_USER_CFG, ITERATIONS=4000</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Source\User;..\..\Source\Libraries\CMSIS\Include;..\..\Source\Libraries\CMSIS\Device\Sinowealth\SH32F2xx\Include;..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\inc;..\..\..\coremark;..\..\Source\User</IncludePath>
+              <IncludePath>..\..\Source\User;..\..\Source\Libraries\CMSIS\Include;..\..\Source\Libraries\CMSIS\Device\Sinowealth\SH32F2xx\Include;..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\inc;..\..\..\coremark;..\..\Source\User</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -485,22 +485,22 @@
             <File>
               <FileName>sh32f2xx_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_rcc.c</FilePath>
+              <FilePath>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_rcc.c</FilePath>
             </File>
             <File>
               <FileName>sh32f2xx_iwdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_iwdt.c</FilePath>
+              <FilePath>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_iwdt.c</FilePath>
             </File>
             <File>
               <FileName>sh32f2xx_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_gpio.c</FilePath>
+              <FilePath>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_gpio.c</FilePath>
             </File>
             <File>
               <FileName>sh32f2xx_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\Source\Libraries\SH32F2xx_sa0_StdPeriph_Driver\1.0\src\sh32f2xx_uart.c</FilePath>
+              <FilePath>..\..\source\libraries\sh32f2xx_sa0_stdperiph_driver\1.0\src\sh32f2xx_uart.c</FilePath>
             </File>
           </Files>
         </Group>
