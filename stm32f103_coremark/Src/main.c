@@ -91,16 +91,22 @@ void SystemClock_Config_Ex(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
 #if defined (SYSTEM_CLOCK_72M)  
+  #warning "SYSTEM_CLOCK_72M"
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
 #elif defined (SYSTEM_CLOCK_64M)  
+  #warning "SYSTEM_CLOCK_64M"
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL8;
 #elif defined (SYSTEM_CLOCK_48M)  
+  #warning "SYSTEM_CLOCK_48M"
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
 #elif defined (SYSTEM_CLOCK_32M)  
+  #warning "SYSTEM_CLOCK_32M"
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
 #elif defined (SYSTEM_CLOCK_24M)  
+  #warning "SYSTEM_CLOCK_24M"
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL3;
 #else
+  #warning "SYSTE_CLOCK not defined, use SYSTEM_CLOCK_72M"
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;  
 #endif
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)

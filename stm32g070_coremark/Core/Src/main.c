@@ -95,13 +95,20 @@ void SystemClock_Config_Ex(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
-#if defined (SYSTEM_CLOCK_64M)
+#if defined (SYSTEM_CLOCK_96M)
+  #warning "SYSTEM_CLOCK_96M, overclock!"
+  RCC_OscInitStruct.PLL.PLLN = 12;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+#elif defined (SYSTEM_CLOCK_64M)
+  #warning "SYSTEM_CLOCK_64M)"
   RCC_OscInitStruct.PLL.PLLN = 8;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
 #elif defined (SYSTEM_CLOCK_24M)
+  #warning "SYSTEM_CLOCK_24M)"
   RCC_OscInitStruct.PLL.PLLN = 12;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV8;
 #else
+  #warning "SYSTEM_CLOCK_64M)"
   RCC_OscInitStruct.PLL.PLLN = 8;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
 #endif
@@ -120,7 +127,7 @@ void SystemClock_Config_Ex(void)
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
 
-#if defined (SYSTEM_CLOCK_64M)
+#if defined (SYSTEM_CLOCK_64M) | (SYSTEM_CLOCK_96M)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
 #elif defined (SYSTEM_CLOCK_24M)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)

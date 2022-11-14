@@ -83,18 +83,23 @@ void SystemClock_Config_Ex(void)
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
 #if defined (SYSTEM_CLOCK_168M)
+  #warning "SYSTEM_CLOCK_168M"
   RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 #elif defined (SYSTEM_CLOCK_160M)
+  #warning "SYSTEM_CLOCK_160M"
   RCC_OscInitStruct.PLL.PLLN = 160;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 #elif defined (SYSTEM_CLOCK_120M)
+  #warning "SYSTEM_CLOCK_120M"
   RCC_OscInitStruct.PLL.PLLN = 120;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 #elif defined (SYSTEM_CLOCK_24M)
+  #warning "SYSTEM_CLOCK_24M"
   RCC_OscInitStruct.PLL.PLLN = 96;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV8;
 #else
+  #warning "SYSTEM_CLOCK not defined, use SYSTEM_CLOCK_168M"
   RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 #endif
