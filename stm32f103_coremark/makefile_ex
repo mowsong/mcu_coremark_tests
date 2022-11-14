@@ -1,0 +1,32 @@
+
+ITERATIONS=2000
+
+C_DEFS += \
+-DITERATIONS=$(ITERATIONS)
+
+ifdef SYSTEM_CLOCK
+C_DEFS += -D$(SYSTEM_CLOCK)
+endif
+
+C_SOURCES += \
+Src/core_portme.c \
+../coremark/core_list_join.c \
+../coremark/core_main.c \
+../coremark/core_matrix.c \
+../coremark/core_state.c \
+../coremark/core_util.c \
+
+C_INCLUDES +=  \
+-I../coremark \
+-ISrc \
+
+OPT = -O3 -Ofast
+
+LDFLAGS += -u_printf_float 
+
+flash:
+	echo "Add flash programming"
+
+purge:
+	rmdir /s /q build
+	
