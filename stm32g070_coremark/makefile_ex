@@ -1,0 +1,38 @@
+
+ITERATIONS=2000
+
+OPT = -O3 -Ofast -funroll-all-loops
+
+C_DEFS += \
+-DITERATIONS=$(ITERATIONS)\
+
+ifdef SYSTEM_CLOCK
+C_DEFS += -D$(SYSTEM_CLOCK)
+endif
+
+C_SOURCES += \
+Core/Src/core_portme.c \
+../coremark/core_list_join.c \
+../coremark/core_main.c \
+../coremark/core_matrix.c \
+../coremark/core_state.c \
+../coremark/core_util.c \
+
+C_INCLUDES +=	 \
+-I../coremark \
+-ICore/Src \
+
+# floating point printf
+LDFLAGS += -u_printf_float 
+
+COMPILER_FLAGS=STR($(MCU) $(OPT))
+
+C_DEFS += \
+-DCOMPILER_FLAGS="\"$(SYSTEM_CLOCK) \" $(COMPILER_FLAGS)"
+
+flash:
+	pyocd flash -t stm32g070cbtx -e auto build/stm32g070_coremark.elf
+
+purge:
+	rmdir /s /q build
+	
